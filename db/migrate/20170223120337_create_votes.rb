@@ -4,6 +4,7 @@ class CreateVotes < ActiveRecord::Migration
       t.integer :votable_id, null: false
       t.string :votable_type, null: false
       t.integer :voter_id, null: false
+      t.boolean :value, null: false
 
       t.timestamps null: false
     end
