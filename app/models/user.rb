@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include BCrypt
+
   has_many :questions, foreign_key: :author_id
   has_many :answers, foreign_key: :responder_id
   has_many :comments, as: :commentable
@@ -8,7 +10,7 @@ class User < ActiveRecord::Base
   validate :validate_password
 
   def password
-    @password ||= Password.new(self.hashed_password)
+    @password ||= Password.new(hashed_password)
   end
 
   def password=(input_password)

@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <span class="error"><%= error %><br></span>
+  <% end %>
+<% end %>
+
+<div class='new-sessions'>
+<form id="existing_user" method="POST" action= '/sessions'>
+    <label for="username">Username:</label>
+    <input type="text" name="user[username]" placeholder="username" value="<%= @user.try(:username) %>">
+    <label for="password">Password:</label>
+    <input type="password" name="user[password]" placeholder="new password">
+    <input type="submit" name="button" value="Click me!">
+</form>
+</div>

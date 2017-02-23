@@ -1,0 +1,20 @@
+<h1>Register as a New User</h1>
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <span class="error"><%= error %><br></span>
+  <% end %>
+<% end %>
+
+<div>
+<form id="new_user" method="POST" action= '/users'>
+    <label for="first_name">First Name:</label>
+    <input type="text" name="user[first_name]" placeholder="first name">
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="user[last_name]" placeholder="last name">
+    <label for="username">Username:</label>
+    <input type="text" name="user[username]" placeholder="username" value="<%= @user.try(:username) %>">
+    <label for="password">Password:</label>
+    <input type="password" name="user[password]" placeholder="new password">
+    <input type="submit" name="button" value="Click me!">
+</form>
+</div>
