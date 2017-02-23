@@ -20,4 +20,4 @@ delete '/sessions' do
   session.delete(:user_id)
   redirect '/'
 end
- #sessions stuff
+
