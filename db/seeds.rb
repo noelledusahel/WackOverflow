@@ -22,14 +22,14 @@ end
     content: Faker::Hipster.paragraph,
     wackest: false,
     question_id: rand(1..20),
-    responser_id: rand(1..20)
+    responder_id: rand(1..20)
   }
   Answer.create(answer_info)
 end
 
 50.times do
   comment_info = {
-    comment_body: Faker::StarWars.quote,
+    body: Faker::StarWars.quote,
     commenter_id: (1..20).to_a.sample,
     commentable_id: (1..40).to_a.sample,
     commentable_type: ['Question', 'Answer'].sample

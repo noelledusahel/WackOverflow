@@ -6,7 +6,7 @@ require ::File.expand_path('../config/environment', __FILE__)
 require 'active_support/core_ext'
 require 'bcrypt'
 require 'pry'
-
+require 'faker'
 
 namespace :generate do
   desc "Create an empty model in app/models, e.g., rake generate:model NAME=User"
