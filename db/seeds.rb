@@ -10,7 +10,7 @@ end
 
 40.times do
   question_info = {
-    title: "Who is" + Faker::HarryPotter.character,
+    title: "Who is " + Faker::HarryPotter.character + "?",
     content: Faker::HarryPotter.quote + "?",
     author_id: rand(1..20)
   }
