@@ -1,7 +1,6 @@
 20.times do
   user_info = {
     username: Faker::Superhero.name,
-    email: Faker::Internet.email,
     password: "password"
   }
   User.create(user_info)
@@ -10,18 +9,18 @@ end
 40.times do
   question_info = {
     title: "Who is" + Faker::HarryPotter.character,
-    question_body: Faker::HarryPotter.quote + "?",
-    questioner_id: rand(1..20)
+    content: Faker::HarryPotter.quote + "?",
+    author_id: rand(1..20)
   }
   Question.create(question_info)
 end
 
 80.times do
   answer_info = {
-    answer_body: Faker::Hipster.paragraph,
-    best_answer: false,
+    content: Faker::Hipster.paragraph,
+    wackest: false,
     question_id: rand(1..20),
-    answerer_id: rand(1..20)
+    responser_id: rand(1..20)
   }
   Answer.create(answer_info)
 end
