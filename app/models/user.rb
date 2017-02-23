@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
-  include BCrypt
-#
+
   has_many :questions, foreign_key: :author_id
   has_many :answers, foreign_key: :responder_id
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
 
-  validates :username, presence: true
+  validates :username, uniqueness: true, presence: true
   validate :validate_password
+
+  include BCrypt
 
   def password
     @password ||= Password.new(hashed_password)
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.authenticate(email, password)
+  def self.authenticate(username, password)
     user = User.find_by(username: username)
 
     if user && user.password == password

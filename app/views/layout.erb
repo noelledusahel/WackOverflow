@@ -19,10 +19,14 @@
 </head>
 <body>
   <nav>
-    <a href="/users/new">Register</a>
-    <a href="/sessions/new">Login</a>
+    <% if logged_in? %>
+      <a href="/sessions">Logout</a>
+    <% else %>
+      <a href="/users/new">Register</a>
+      <a href="/sessions/new">Login</a>
+    <% end %>
   </nav>
   <%= yield %>
 </body>
 </html>
-#
+
