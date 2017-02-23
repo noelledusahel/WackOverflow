@@ -1,7 +1,7 @@
 20.times do
   user_info = {
     username: Faker::Superhero.name,
-    password: "password"
+    hashed_password: "password"
   }
   User.create(user_info)
 end
