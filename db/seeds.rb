@@ -1,5 +1,7 @@
 20.times do
   user_info = {
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     username: Faker::Superhero.name,
     hashed_password: "password"
   }
