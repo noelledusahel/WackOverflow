@@ -16,7 +16,7 @@ end
 post '/questions' do
   @question = Question.new(title: params[:title], content: params[:content], author_id: session[:user_id] )
   if @question.save
-    redirect '/questions'
+    redirect "/questions/#{@question.id}"
   else
     @errors = @question.errors.full_message
     erb :'questions/new'
