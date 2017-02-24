@@ -1,0 +1,11 @@
+<div class='navbar-else'>
+  <a href="/users/new">Register</a>
+  <a class="login-link" href="/sessions/new">Login</a>
+  <form id="existing_user" method="POST" action= '/sessions'>
+    <label for="username">Username:</label>
+    <input type="text" name="user[username]" placeholder="username" value="<%= @user.try(:username) %>">
+    <label for="password">Password:</label>
+    <input type="password" name="user[password]" placeholder="new password">
+    <input type="submit" name="button" value="Click me!">
+  </form>
+</div>

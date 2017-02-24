@@ -5,14 +5,27 @@ get '/sessions/new' do
 end
 
 post '/sessions' do
+
   @user = User.authenticate(params[:user][:username], params[:user][:password])
-  if @user
-    set_user(@user)
-    redirect "/"
+  p @user
+  if request.xhr?
+    if @user
+      set_user(@user)
+      erb :_navbar_log_out, layout: false
+    else
+      status 422
+      @errors = ["Login failed"]
+      erb :'/sessions/new'
+    end
   else
-    status 422
-    @errors = ["Login failed"]
-    erb :'/sessions/new'
+    if @user
+      set_user(@user)
+      redirect "/"
+    else
+      status 422
+      @errors = ["Login failed"]
+      erb :'/sessions/new'
+    end
   end
 end
 
@@ -20,7 +33,7 @@ delete '/sessions' do
   session.delete(:user_id)
   if request.xhr?
     200
-    erb :_navbar, layout: false
+    erb :_navbar_log_in, layout: false
   else
     redirect '/'
   end
