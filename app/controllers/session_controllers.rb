@@ -9,7 +9,8 @@ post '/sessions' do
   if request.xhr?
     if @user
       set_user(@user)
-      erb :_navbar_log_out, layout: false
+      content_type :json
+      { nav: erb(:_navbar_log_out, layout: false), link: "<a href='/questions/new'>Post New Wack Question</a>" }.to_json
     else
       status 422
       @errors = ["Login failed"]

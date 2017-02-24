@@ -12,10 +12,12 @@ $(document).ready(function() {
     $.ajax({
       url: url,
       type: type,
+      dataType: "json",
       data: $form.serialize()
     })
     .done(function(response) {
-      $('.navbar-else').replaceWith(response);
+      $('.navbar-else').replaceWith(response.nav);
+      $("#not-logged-in").html(response.link);
     })
   })
   $('.navbar').on('click', '.logout', function(e){

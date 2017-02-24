@@ -1,7 +1,11 @@
 <div>
-  <div class="container">
-    <label>Feeling Wack?</label><br>
-    <a href="/questions/new">Post New Wack Question</a>
+  <div class="container ">
+    <br><label>That Shit Is Wack!</label><br>
+    <% if logged_in? %>
+      <a href="/questions/new">Post New Wack Question</a>
+    <% else %>
+      <p id="not-logged-in"> Dont be wack...Log in fool</p>
+    <% end %>
   </div>
   <div class='questions-container'>
     <% @questions.each do |question| %>
