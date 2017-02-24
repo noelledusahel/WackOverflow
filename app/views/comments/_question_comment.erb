@@ -1,11 +1,13 @@
 <div class="container" id='question-comment'>
   <h3>Comments</h2>
     <div class='reply'>
-    <% comments = @question.comments %>
-    <% comments.each do |comment| %>
-      <p><%= comment.body %></p><br>
-      <p>comment left by <%= comment.commenter.username %> at <%= comment.created_at %></p><br>
-    <% end %>
+      <% comments = @question.comments %>
+      <% comments.each do |comment| %>
+      <div class="comment-body">
+        <p><%= comment.body %></p>
+        <p><small>comment left by <%= comment.commenter.username %> at <%= comment.created_at %></small></p><br>
+      </div>
+      <% end %>
     </div>
-</div>
+  </div>
 
