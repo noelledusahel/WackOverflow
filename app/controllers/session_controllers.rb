@@ -5,9 +5,7 @@ get '/sessions/new' do
 end
 
 post '/sessions' do
-
   @user = User.authenticate(params[:user][:username], params[:user][:password])
-  p @user
   if request.xhr?
     if @user
       set_user(@user)
