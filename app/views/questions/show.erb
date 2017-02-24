@@ -1,4 +1,24 @@
+
+<link rel="stylesheet" href="/css/application.css">
+
 <div class='container' id="<%= @question.id %>" style="background-color: lightgreen" >
+<div class="score-table">
+  <table>
+    <th class="wack-button">
+      <form method="POST" action="/questions/<%= @question.id %>/votes">
+        <input type="submit" name="value" value="WORD!">
+      </form>
+    </th>
+    <th class="score">
+     SCORE
+    </th>
+    <th class="not-wack-button">
+      <form method="POST" action="/questions/<%= @question.id %>/votes">
+      <input type="submit" name="value" value="WTF!">
+      </form>
+    </th>
+  </table>
+</div>
 
   <div class='question-title' >
     <h2 ><%= @question.title %></h2>
@@ -16,9 +36,9 @@
 <div class="container">
   <div class='answers-container'>
     <% @answers.each do |answer| %>
-    <div id="<%= answer.id %>">
-      <p style="background-color:lightgrey"> <%= answer.content %></p>
-      <p style="font-style:italic; text-align:right; font-size: 15px">~~ <%= answer.responder.first_name%></p>
+    <div class= "answer-response" id="<%= answer.id %>">
+      <p> <%= answer.content %></p>
+      <p style="font-style:italic; text-align:right; font-size: 15px",>~~ <%= answer.responder.first_name%></p>
     </div>
     <% end %>
   </div>
