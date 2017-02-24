@@ -17,13 +17,6 @@ $(document).ready(function() {
     .done(function(response) {
       $('.navbar-else').replaceWith(response);
     })
-    .fail(function() {
-      console.log("error");
-    })
-    .always(function() {
-      console.log("complete");
-    });
-
   })
   $('.navbar').on('click', '.logout', function(e){
     e.preventDefault();
