@@ -1,7 +1,7 @@
-post '/comment' do
-  # find the comments questions id
-  # use that for the commentable id/type
+post '/questions/:id/comments' do
+  id = params[:id].to_i
+  question = Question.find(id)
+  question.comments.create(body: params[:body], commenter_id: current_user.id)
 
-  content = params[:comment_content]
-  Comment.create
+  redirect "/questions/#{question.id}"
 end
