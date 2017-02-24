@@ -24,13 +24,16 @@
   </div>
 </div>
 
-<div class='container'>
-  <br>
-  <div class='answer-form'>
-    <form class="new-answer" method="post" action="/questions/<%= @question.id %>/answers">
-      <label>Post an answer:</label><br><br>
-      <input type="text" name="content" style="width: 400px"><br><br>
-      <input type="submit" value="Submit"><br>
-    </form>
+<% if logged_in? %>
+  <div class='container'>
+    <br>
+    <div class='answer-form'>
+      <form class="new-answer" method="post" action="/questions/<%= @question.id %>/answers">
+        <label>Post an answer:</label><br><br>
+        <input type="text" name="content" style="width: 400px"><br><br>
+        <input type="submit" value="Submit"><br>
+      </form>
+    </div>
   </div>
-</div>
+<% end %>
+
