@@ -18,12 +18,14 @@
   <title></title>
 </head>
 <body>
-  <nav>
+  <nav class='navbar'>
     <% if logged_in? %>
-      <a href="/sessions">Logout</a>
+      <form class='logout' type='logout' method='POST' action='/sessions'>
+        <input class='hidden' type='hidden' name='_method' value='delete'>
+        <input type='submit' value='Logout'>
+      </form>
     <% else %>
-      <a href="/users/new">Register</a>
-      <a href="/sessions/new">Login</a>
+      <%= erb :_navbar %>
     <% end %>
   </nav>
 

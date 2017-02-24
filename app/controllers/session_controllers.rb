@@ -18,6 +18,11 @@ end
 
 delete '/sessions' do
   session.delete(:user_id)
-  redirect '/'
+  if request.xhr?
+    200
+    erb :_navbar, layout: false
+  else
+    redirect '/'
+  end
 end
 
