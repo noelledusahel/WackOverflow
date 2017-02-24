@@ -20,12 +20,9 @@
 <body>
   <nav class='navbar'>
     <% if logged_in? %>
-      <form class='logout' type='logout' method='POST' action='/sessions'>
-        <input class='hidden' type='hidden' name='_method' value='delete'>
-        <input type='submit' value='Logout'>
-      </form>
+      <%= erb :_navbar_log_out %>
     <% else %>
-      <%= erb :_navbar %>
+      <%= erb :_navbar_log_in %>
     <% end %>
   </nav>
 
