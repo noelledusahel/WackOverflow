@@ -2,36 +2,40 @@
 <link rel="stylesheet" href="/css/application.css">
 
 <div class='container' id="<%= @question.id %>" style="background-color: lightgreen" >
-<div class="score-table">
-  <table>
-    <th class="wack-button">
-      <form method="POST" action="/questions/<%= @question.id %>/votes">
-        <input type="submit" name="value" value="WORD!">
-      </form>
-    </th>
-    <th class="score">
-     SCORE
-    </th>
-    <th class="not-wack-button">
-      <form method="POST" action="/questions/<%= @question.id %>/votes">
-      <input type="submit" name="value" value="WTF!">
-      </form>
-    </th>
-  </table>
+
+  <div class="score-table">
+    <table>
+      <% if !@question.voters.include?(current_user) %>
+      <th class="wack-button">
+        <form method="POST" action="/questions/<%= @question.id %>/votes">
+          <input style="width:5em"type="submit" name="value" value="WORD!">
+        </form>
+      </th>
+      <th style="width:25px">   </th>
+      <th class="not-wack-button">
+        <form method="POST" action="/questions/<%= @question.id %>/votes">
+          <input style="width:5em" type="submit" name="value" value="WTF!">
+          <% end %>
+       </form>
+     </th>
+   </table>
+   Vote Score:<span class="score" style="font-size: 1.5em;">
+           <%= @question.vote_score %>
+         </span>
+ </div>
+
+ <div class='question-title' >
+  <h2 ><%= @question.title %></h2>
+  <p> posted by: <%= @question.author.username %> </p>
 </div>
 
-  <div class='question-title' >
-    <h2 ><%= @question.title %></h2>
-    <p> posted by: <%= @question.author.username %> </p>
-  </div>
-
-  <div class='question-content' >
-    <p><%= @question.content %></p>
-  </div>
+<div class='question-content' >
+  <p><%= @question.content %></p>
+</div>
 </div>
 
-  <%= erb :'/comments/_question_comment' %>
-  <%= erb :'/comments/_question_comment_form' %>
+<%= erb :'/comments/_question_comment' %>
+<%= erb :'/comments/_question_comment_form' %>
 
 <div class="container">
   <div class='answers-container'>
@@ -45,15 +49,15 @@
 </div>
 
 <% if logged_in? %>
-  <div class='container'>
-    <br>
-    <div class='answer-form'>
-      <form class="new-answer" method="post" action="/questions/<%= @question.id %>/answers">
-        <label>Post an answer:</label><br><br>
-        <input type="text" name="content" style="width: 400px"><br><br>
-        <input type="submit" value="Submit"><br>
-      </form>
-    </div>
+<div class='container'>
+  <br>
+  <div class='answer-form'>
+    <form class="new-answer" method="post" action="/questions/<%= @question.id %>/answers">
+      <label>Post an answer:</label><br><br>
+      <input type="text" name="content" style="width: 400px"><br><br>
+      <input type="submit" value="Submit"><br>
+    </form>
   </div>
+</div>
 <% end %>
 

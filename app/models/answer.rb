@@ -3,6 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
+  has_many :voters, through: :votes
 
   def vote_score
     score = 0
