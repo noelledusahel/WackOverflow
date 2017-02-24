@@ -1,0 +1,5 @@
+      <div class='container' class='one-comment'>
+        <p><%= comment.body %></p><br>
+        <p>comment left by <%= comment.commenter.username %> at <%= comment.created_at %></p><br>
+        <%= erb :'/comments/_delete_comment', locals: { comment: comment} %>
+      </div>
