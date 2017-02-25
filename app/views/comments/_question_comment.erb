@@ -1,8 +1,7 @@
 <div class="container" id='question-comment'>
   <h3>Comments</h2>
     <div class='reply'>
-      <% comments = @question.comments %>
-      <% comments.each do |comment| %>
+      <% @question.comments.each do |comment| %>
       <%= erb :'/comments/_one_comment', locals: { comment: comment } %>
       <% end %>
     </div>

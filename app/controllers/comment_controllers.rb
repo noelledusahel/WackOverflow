@@ -1,15 +1,13 @@
 post '/questions/:id/comments' do
-  binding.pry
   id = params[:id].to_i
-  question = Question.find(id)
-  question.comments.create(body: params[:body], commenter_id: current_user.id)
+  @question = Question.find(id)
+  new_comment = @question.comments.create(body: params[:body], commenter_id: current_user.id)
 
-  if response.xhr?
-    content_type :json
-    {body: question.comments.body}.to_json
-    erb :'/comment/one_comment'
+  if request.xhr?
+
+    erb :'/comments/_one_comment', locals: { comment: new_comment }, layout: false
   else
-    redirect "/questions/#{question.id}"
+    redirect "/questions/#{@question.id}"
   end
 end
 

@@ -38,21 +38,20 @@ $(document).ready(function() {
   $('#question-comment-form').on("click", '#submit-button', function(e){
     e.preventDefault();
 
-    var textBar = $(this).closest('#question-comment-form').find('#input-text')
-    var data = textBar.val()
-      // debugger
+    var textBar = $(this).closest('#question-comment-form').find('#input-text');
+    var data = {body: textBar.val()};
 
-    var formDiv = $(this).closest('#question-comment-form').find('form')
-    var url = formDiv.attr('action')
-    var type = formDiv.attr('method')
-
+    var formDiv = $(this).closest('#question-comment-form').find('form');
+    var url = formDiv.attr('action');
+    var type = formDiv.attr('method');
+    debugger
     $.ajax({
       url: url,
       type: type,
       data: data,
     })
     .done(function(response) {
-      console.log(response);
+      $('#question-comment').append(response);
     })
   })
 });
