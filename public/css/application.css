@@ -1,8 +1,12 @@
+html {
+	background: snow;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  border: 2px solid black;
 }
 
 
@@ -18,3 +22,8 @@
 .comment-body {
   background-color: #8BCABD;
 }
+
+div.questions-container .container {
+	background: lightgrey;
+}
+

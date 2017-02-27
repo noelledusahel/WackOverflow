@@ -19,6 +19,7 @@
 </head>
 <body>
   <nav class='navbar'>
+
     <a href="/questions">Home</a>
     <% if logged_in? %>
       <%= erb :_navbar_log_out %>
@@ -26,6 +27,7 @@
       <%= erb :_navbar_log_in %>
     <% end %>
   </nav>
+  <h1 style="text-align: center;color:navy;background-color:darkorange">🔥🖕 WackOverflow 🖕🔥</h1>
 
   <%= yield %>
 </body>

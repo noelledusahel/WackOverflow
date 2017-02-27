@@ -2,7 +2,7 @@
   user_info = {
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    username: Faker::Superhero.name,
+    username: Faker::Superhero.unique.name.split.join.downcase,
     password: "password"
   }
   User.create!(user_info)
