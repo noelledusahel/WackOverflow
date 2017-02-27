@@ -40,6 +40,31 @@
 <div class="container">
   <div class='answers-container'>
     <% @answers.each do |answer| %>
+
+
+<div class="score-table">
+    <table>
+      <% if !answer.voters.include?(current_user) %>
+      <th class="wack-button">
+        <form method="POST" action="/answers/<%= answer.id %>/votes">
+          <input style="width:5em"type="submit" name="value" value="WORD!">
+        </form>
+      </th>
+      <th style="width:10px">   </th>
+      <th class="not-wack-button">
+        <form method="POST" action="/answers/<%= answer.id %>/votes">
+          <input style="width:5em" type="submit" name="value" value="WTF!">
+          <% end %>
+       </form>
+     </th>
+   </table>
+   Vote Score:<span class="score" style="font-size: 1em;">
+           <%= answer.vote_score %>
+         </span>
+ </div>
+
+
+
     <div class= "answer-response" id="<%= answer.id %>">
       <p> <%= answer.content %></p>
       <p style="font-style:italic; text-align:right; font-size: 15px",>~~ <%= answer.responder.first_name%></p>
