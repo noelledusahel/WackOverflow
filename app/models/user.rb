@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
 
-  validates :username, presence: true
+  validates :username, uniqueness: true, presence: true
   validate :validate_password
 
   include BCrypt
